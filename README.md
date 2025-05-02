@@ -5,8 +5,7 @@
 </p>
 
 <p align="center">
-  a bot that likes posts on bluesky if they meow right.<br />
-  built to serve the algorithm with feline devotion.
+  a bot that likes posts on bluesky if they meow right.
 </p>
 
 ---

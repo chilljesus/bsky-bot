@@ -1,0 +1,20 @@
+{
+  "name": "bsky-bot",
+  "version": "1.0.0",
+  "description": "bot for auto-liking bluesky posts, as well as any other garbage i may wanna do",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sophia",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@atproto/api": "^0.15.5",
+    "@ipld/car": "^5.4.0",
+    "@ipld/dag-cbor": "^9.2.2",
+    "atproto": "^0.0.1",
+    "dotenv": "^16.5.0",
+    "ws": "^8.18.1"
+  }
+}

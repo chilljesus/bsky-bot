@@ -70,6 +70,43 @@ export const isSafe = async (post, client) => {
   return true;
 };
 
+export const getRandomMeow = () => {
+  const meows = [
+    'meow~',
+    'nyaaa :3',
+    'mrrrp',
+    'miau owo',
+    'meooww~ ^w^',
+    'mrrraow',
+    'meow :3c',
+    'nyaa~ 💜',
+    'mrow~',
+    'meowmeowmeow',
+    'mew~ 💜',
+    'mew mew mew >w<',
+    'nya. u///u',
+    'mew~ :3 💜',
+    'meoww~ :33',
+    'mraow~ 💜',
+    'meow~! >:3',
+    'nyaa~ (^・ω・^ )',
+    '(=^･ω･^=) meow',
+    'nyan nyan~ 💜',
+    'mew mew ^w^ 💜',
+    '~nya 💜',
+    'mreow. :3',
+    'meoww~ (*≧ω≦)',
+    'mrrp? :3',
+    'meow~ uwu',
+    'mew meow nya~ 💜',
+    'nyoooom~ meow!'
+  ];
+
+  const selected = meows[Math.floor(Math.random() * meows.length)];
+  console.log(`[getRandomMeow] picked: "${selected}"`);
+  return selected;
+};
+
 export const log = (...args) => {
   const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
   console.log(`[${timestamp}]`, ...args);

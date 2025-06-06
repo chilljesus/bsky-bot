@@ -1,5 +1,8 @@
 import WebSocket from 'ws';
-import { log, isSafe, getCatness } from './utils.js';
+import { log, isSafe, getCatness, getRandomMeow } from './utils.js';
+
+const cockremoverDid = 'did:plc:hdfrgtchoulcxlfzl2qsqdec';
+const trixDid = 'did:plc:honas5g3yaqo33mqvpfv5xdf';
 
 const connectFirehose = async (client, likePost, dryRun) => {
   let ws;
@@ -46,13 +49,20 @@ const connectFirehose = async (client, likePost, dryRun) => {
     const post = commit.record;
     if (!post || !post.text) return;
 
+    const uri = `at://${evt.did}/app.bsky.feed.post/${commit.rkey}`;
+    const url = `https://bsky.app/profile/${evt.did}/post/${commit.rkey}`;
+    const fakePost = { record: post, uri };
+
+    //                              //
+    // NEVER UNCOMMENT THESE LINES //
+    //                            //
+    /*log(`[LIKE] ${url}`);
+    await likePost(client, uri, commit.cid, dryRun);
+    return;*/
+
     const text = post.text;
     const score = getCatness(text);
     if (score >= 4) {
-      const uri = `at://${evt.did}/app.bsky.feed.post/${commit.rkey}`;
-      const url = `https://bsky.app/profile/${evt.did}/post/${commit.rkey}`;
-      const fakePost = { record: post, uri };
-
       const safe = await isSafe(fakePost, client);
       const status = safe ? 'LIKE' : 'FAIL';
       log(`[${status}] [${score}] ${url}`);
